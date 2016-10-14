@@ -25,7 +25,7 @@ Official home on Github: [https://github.com/eenewbsauce/fullstory](https://gith
 
    *All parameters are optional
 
-As Callback
+***As Callback***
 ```javascript
 let params = {
   uid: number,
@@ -37,11 +37,10 @@ FullStory.getSessions([params], [token], [(err, sessions) => {
   let sessions = sessions;
 }])
 ```
-or
 
-As Promise
+***As Promise***
 ```javascript
-FullStory.getSessions(params, token)
+FullStory.getSessions([params], [token])
   .then(sessions => {
     let sessions = sessions;
   })
