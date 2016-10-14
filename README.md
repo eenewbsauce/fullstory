@@ -1,6 +1,10 @@
 # FullStory
 FullStory SDK for API version 1
 
+## NPM
+
+Official home on NPM: [https://github.com/eenewbsauce/fullstory]()
+
 ## Setup
 
 1. Add environment variable for authentication
