@@ -3,7 +3,11 @@ FullStory SDK for API version 1
 
 ## NPM
 
-Official home on NPM: [https://github.com/eenewbsauce/fullstory]()
+Official home on NPM: [https://www.npmjs.com/package/fullstory]()
+
+## Github
+
+Official home on Github: [https://github.com/eenewbsauce/fullstory]()
 
 ## Setup
 
