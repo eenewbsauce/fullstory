@@ -1,0 +1,26 @@
+{
+  "name": "fullstory",
+  "version": "1.0.0",
+  "description": "FullStory SDK for API version 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/eenewbsauce/fullstory.git"
+  },
+  "keywords": [
+    "fullstory",
+    "sdk"
+  ],
+  "author": "eenewbsauce",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eenewbsauce/fullstory/issues"
+  },
+  "homepage": "https://github.com/eenewbsauce/fullstory#readme",
+  "dependencies": {
+    "request": "^2.75.0"
+  }
+}
