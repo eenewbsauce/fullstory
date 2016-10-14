@@ -1,10 +1,12 @@
+let envToken = process.env.FULLSTORY_TOKEN;
+
 module.exports = {
   decipherArguments: decipherArguments
 }
 
 let dummyCallback = function() {};
 
-function decipherArguments(arguments, envToken) {
+function decipherArguments(arguments) {
   let output = {
     params: {},    
     token: envToken,
@@ -12,17 +14,12 @@ function decipherArguments(arguments, envToken) {
   };
 
   switch(arguments.length) {
-    case 1:
-      output.params = arguments[0];
-      break;
-    case 2:
-      output.params = arguments[0];
-      output.token = arguments[1];
-      break;
     case 3:
-      output.params = arguments[0];
+      output.cb = arguments[2];
+    case 2:
       output.token = arguments[1];
-      output.cb = arguments[2];      
+    case 1:
+      output.params = arguments[0];             
   }
 
   return output;

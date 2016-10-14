@@ -5,7 +5,6 @@ let helper          = require('./helper')
 let paramsHelper    = helper.params;
 let argumentsHelper = helper.arguments;
 
-let envToken        = process.env.FULLSTORY_TOKEN;
 let endpoint        = 'https://www.fullstory.com/api/v1/sessions';
 
 module.exports = new FullStory();
@@ -13,7 +12,7 @@ module.exports = new FullStory();
 function FullStory(){}
 
 FullStory.prototype.getSessions = function getSessions(params, token, callback) {
-  let args = argumentsHelper.decipherArguments(arguments, envToken);
+  let args = argumentsHelper.decipherArguments(arguments);
 
   return new Promise((resolve, reject) => {
     request({
