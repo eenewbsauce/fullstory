@@ -48,3 +48,6 @@ FullStory.getSessions([params], [token])
     //handle err
   })
 ```
+
+## Official FullStory API Docs
+[http://help.fullstory.com/11269-Develop](http://help.fullstory.com/11269-Develop)
