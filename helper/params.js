@@ -9,7 +9,7 @@ function convertToQueryString(params) {
 
   Object.keys(params).forEach((key, index) => {
     let querySeperator = index === 0 ? '?' : '&'; 
-    output += format('%=%', key, params[key]);
+    output += format('%s%s=%s', querySeperator, key, params[key]);
   });
 
   return output;
