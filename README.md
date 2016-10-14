@@ -1,4 +1,4 @@
-# fullstory
+# FullStory
 FullStory SDK for API version 1
 
 ## Setup
