@@ -1,46 +1,45 @@
-var request         = require('request');
-var format          = require('util').format;
+let request         = require('request');
+let format          = require('util').format;
+
+let helper          = require('./helper')
+let paramsHelper    = helper.params;
+let argumentsHelper = helper.arguments;
+
+let envToken        = process.env.FULLSTORY_TOKEN;
+let endpoint        = 'https://www.fullstory.com/api/v1/sessions';
 
 module.exports = new FullStory();
 
 function FullStory(){}
 
-FullStory.prototype.getUserId = function getUserId(clientId, cb) {
-    secureConfig.get("fullStory", "api", function(err, config) {
+FullStory.prototype.getSessions = function getSessions(params, token, callback) {
+  let args = argumentsHelper.decipherArguments(arguments, envToken);
+
+  return new Promise((resolve, reject) => {
+    request({
+        url:  format('%s%s', endpoint, paramsHelper.convertToQueryString(args.params)),
+        headers: {
+            "authorization": "Basic " + args.token,
+            "content-type": "application/json"
+        }
+      }, (err, response) => {
         if (err) {
-            logger.error({location: "fullstory::getUserId", clientId: clientId}, 'error fetching config data');
-            return cb(err);
+            reject(err);
+            return args.cb(err);
         }
 
-        if (!config.hasOwnProperty('token') || !config.hasOwnProperty('endpoint')) {
-            logger.error({location: "fullstory::getUserId", clientId: clientId}, 'malformed config data');
-            return cb(new Error('Malformed config: token or endpoint missing for fullstory api'));
+        let fsData;
+        
+        try {
+          fsData = JSON.parse(response.body);
+        } catch(err) {
+            reject(err);          
+            return args.cb(err);
         }
 
-        request({
-            url:  format('%s?uid=%s', config.endpoint, clientId),
-            headers: {
-                "authorization": "Basic " + config.token,
-                "content-type": "application/json"
-            }
-        }, function(err, response, body) {
-            if (err) {
-                logger.error({location: "fullstory::getUserId", clientId: clientId}, 'failed to fetch data');
-                return cb(err);
-            }
-
-            var userId;
-            
-            try {
-                var fsData = JSON.parse(response.body);
-                userId = fsData[0].UserId;
-            } catch(err) {
-                logger.error({location: "fullstory::getUserId", clientId: clientId}, 'failed to parse as json');
-                return cb(err);
-            }
-
-            cb(null, userId);
-        });
-    });
+        resolve(fsData);
+        args.cb(null, fsData);
+      });
+  });      
 };
 

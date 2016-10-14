@@ -14,18 +14,25 @@ or set in `.bash_rc`, `.bash_profile`, etc...
 `let fullStory = require('fullstory');`
 
 3. Query the FullStory API
+*All parameters are optional
 
-As callback
+As Callback
 ```javascript
-FullStory.getSessions((err, sessions) => {
+let params = {
+  uid: number,
+  email: string
+  limit: number
+}
+
+FullStory.getSessions(params, token, (err, sessions) => {
   let sessions = sessions;
 })
 ```
 or 
 
-As promise
+As Promise
 ```javascript
-FullStory.getSessions
+FullStory.getSessions(params, token)
   .then(sessions => {
     let sessions = sessions;
   })
