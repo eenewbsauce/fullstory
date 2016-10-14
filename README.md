@@ -1,13 +1,13 @@
 # FullStory
-FullStory SDK for API version 1
+The FullStory SDK for API version 1 supporting both Promise and Callback styles.
 
 ## NPM
 
-Official home on NPM: [https://www.npmjs.com/package/fullstory]()
+Official home on NPM: [https://www.npmjs.com/package/fullstory](https://www.npmjs.com/package/fullstory)
 
 ## Github
 
-Official home on Github: [https://github.com/eenewbsauce/fullstory]()
+Official home on Github: [https://github.com/eenewbsauce/fullstory](https://github.com/eenewbsauce/fullstory)
 
 ## Setup
 

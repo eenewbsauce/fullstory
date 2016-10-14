@@ -1,3 +1,5 @@
+'use strict';
+
 let envToken = process.env.FULLSTORY_TOKEN;
 
 module.exports = {
@@ -6,20 +8,20 @@ module.exports = {
 
 let dummyCallback = function() {};
 
-function decipherArguments(arguments) {
+function decipherArguments(args) {
   let output = {
-    params: {},    
+    params: {},
     token: envToken,
     cb: dummyCallback
   };
 
-  switch(arguments.length) {
+  switch(args.length) {
     case 3:
-      output.cb = arguments[2];
+      output.cb = args[2];
     case 2:
-      output.token = arguments[1];
+      output.token = args[1];
     case 1:
-      output.params = arguments[0];             
+      output.params = args[0];
   }
 
   return output;

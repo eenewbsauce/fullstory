@@ -1,5 +1,6 @@
+'use strict';
+
 let request         = require('request');
-let format          = require('util').format;
 
 let helper          = require('./helper')
 let paramsHelper    = helper.params;
@@ -16,7 +17,7 @@ FullStory.prototype.getSessions = function getSessions(params, token, callback) 
 
   return new Promise((resolve, reject) => {
     request({
-        url:  format('%s%s', endpoint, paramsHelper.convertToQueryString(args.params)),
+        url:  `${endpoint}${paramsHelper.convertToQueryString(args.params)}`,
         headers: {
             "authorization": "Basic " + args.token,
             "content-type": "application/json"
@@ -28,17 +29,16 @@ FullStory.prototype.getSessions = function getSessions(params, token, callback) 
         }
 
         let fsData;
-        
+
         try {
           fsData = JSON.parse(response.body);
         } catch(err) {
-            reject(err);          
+            reject(err);
             return args.cb(err);
         }
 
         resolve(fsData);
         args.cb(null, fsData);
       });
-  });      
+  });
 };
-

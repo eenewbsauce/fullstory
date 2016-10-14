@@ -1,3 +1,5 @@
+'use strict';
+
 let fullStory = require('../');
 let result;
 let err;
@@ -9,7 +11,7 @@ fullStory.getSessions({uid: 239737})
     result = data;
   })
   .catch(err => {
-    console.log('error');    
+    console.log('error');
     err = err;
   });
 
@@ -18,7 +20,7 @@ fullStory.getSessions({uid: 239737})
       console.log(result);
       clearInterval(interval);
     } else if (err) {
-      console.log(err);      
-      clearInterval(interval);      
+      console.log(err);
+      clearInterval(interval);
     }
   }, 50);
