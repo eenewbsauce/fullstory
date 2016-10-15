@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --recursive tests/**/*",
-    "test-e2e": "node ./tests/e2e.js"
+    "test-e2e": "node ./tests/e2e.js",
+    "test-e2edemo": "node ./tests/e2e.js 239737"
   },
   "repository": {
     "type": "git",

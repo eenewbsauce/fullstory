@@ -6,10 +6,12 @@ let err;
 let interval;
 
 console.log(JSON.stringify(process.argv, null, 4));
-// process.argv['uid'];
-// process.argv['email']
 
-fullStory.getSessions()
+
+fullStory.getSessions({
+  uid: process.argv[2],
+  email: process.argv[3]
+})
   .then(data => {
     console.log('success');
     result = data;

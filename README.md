@@ -57,14 +57,14 @@ Official home on Github: [https://github.com/eenewbsauce/fullstory](https://gith
 
 ### e2e
 
-Fetch 20 sessions
-`npm run test-e2e`
-
 Fetch sessions for a client by uid
-`npm run test-e2e -- --uid={your_client_uid}`
+`npm run test-e2e {your_client_uid}`
 
 Fetch sessions for a client by email
-`npm run test-e2e -- --email={your_client_email}`
+`npm run test-e2e {your_client_email}`
+
+Fetch union of sessions for a client with uid and email
+`npm run test-e2e {your_client_uid} {your_client_email}`
 
 ### Unit Tests
 
