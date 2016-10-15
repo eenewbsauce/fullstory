@@ -31,7 +31,7 @@ Official home on Github: [https://github.com/eenewbsauce/fullstory](https://gith
    - If `uid` and `email` supplied, then API with return union of the two collections
 
    ***As Callback***
-   ```javascript
+```javascript
     let fsParams = {
       uid: number,
       email: string
@@ -41,10 +41,10 @@ Official home on Github: [https://github.com/eenewbsauce/fullstory](https://gith
    fullStory.getSessions(fsParams, [token], [(err, sessions) => {
     console.log(sessions) // [{UserId:123, SessionId: 456, CreatedTime: 1476470464, FsUrl: https://www.fullstory.com...}]
    }])
-  ```
+```
 
   ***As Promise***
-  ```javascript
+```javascript
     fullStory.getSessions(fsParams, [token])
       .then(sessions => {
         let sessions = sessions;
@@ -52,7 +52,7 @@ Official home on Github: [https://github.com/eenewbsauce/fullstory](https://gith
       .catch(err => {
         //handle err
       })
-  ```
+```
 
 ## Tests
 
