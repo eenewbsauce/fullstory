@@ -10,44 +10,47 @@ Official home on NPM: [https://www.npmjs.com/package/fullstory](https://www.npmj
 Official home on Github: [https://github.com/eenewbsauce/fullstory](https://github.com/eenewbsauce/fullstory)
 
 ## Setup
+1. Install the module
 
-1. Add environment variable for authentication
+  `npm i fullstory`
+
+2. Add environment variable for authentication (optional)
 
    `export FULLSTORY_TOKEN={YOUR_TOKEN}`
 
-   or set in `.bash_rc`, `.bash_profile`, etc...
+   or set in `.bashrc`, `.bash_profile`, etc...
 
-2. Require the library
+3. Require the library
 
    `let fullStory = require('fullstory');`
 
-3. Query the FullStory API
+4. Query the FullStory API
 
    *All parameters are optional
 
-***As Callback***
-```javascript
-let params = {
-  uid: number,
-  email: string
-  limit: number
-}
+   ***As Callback***
+   ```javascript
+    let fsParams = {
+      uid: number,
+      email: string
+      limit: number
+    }
 
-FullStory.getSessions([params], [token], [(err, sessions) => {
-  let sessions = sessions;
-}])
-```
-
-***As Promise***
-```javascript
-FullStory.getSessions([params], [token])
-  .then(sessions => {
+   fullStory.getSessions([fsParams], [token], [(err,      sessions) => {
     let sessions = sessions;
-  })
-  .catch(err => {
-    //handle err
-  })
-```
+   }])
+  ```
+
+  ***As Promise***
+  ```javascript
+  fullStory.getSessions([fsParams], [token])
+    .then(sessions => {
+      let sessions = sessions;
+    })
+    .catch(err => {
+      //handle err
+    })
+  ```
 
 ## Official FullStory API Docs
 [http://help.fullstory.com/11269-Develop](http://help.fullstory.com/11269-Develop)

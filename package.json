@@ -4,7 +4,8 @@
   "description": "FullStory SDK for API version 1",
   "main": "index.js",
   "scripts": {
-    "test": "node ./tests/e2e.js"
+    "test": "mocha --recursive tests/**/*",
+    "test-e2e": "node ./tests/e2e.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,10 @@
   "homepage": "https://github.com/eenewbsauce/fullstory#readme",
   "dependencies": {
     "request": "^2.75.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2",
+    "sinon": "^1.17.6"
   }
 }

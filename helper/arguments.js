@@ -9,6 +9,10 @@ module.exports = {
 let dummyCallback = function() {};
 
 function decipherArguments(args) {
+  if (typeof args === 'undefined') {
+    throw new Error('helper::arguments::decipherArguments:: missing args param');
+  }
+  
   let output = {
     params: {},
     token: envToken,
