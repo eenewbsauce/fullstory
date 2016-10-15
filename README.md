@@ -38,7 +38,7 @@ Official home on Github: [https://github.com/eenewbsauce/fullstory](https://gith
     }
 
    fullStory.getSessions(fsParams, [token], [(err, sessions) => {
-    let sessions = sessions;
+    console.log(sessions) // [{UserId:123, SessionId: 456, CreatedTime: 1476470464, FsUrl: https://www.fullstory.com...}]
    }])
   ```
 
