@@ -26,7 +26,8 @@ Official home on Github: [https://github.com/eenewbsauce/fullstory](https://gith
 
 4. Query the FullStory API
 
-   *All parameters are optional
+   *All parameters shown in []
+   If uid and email supplied, then API with return union of the two collections
 
    ***As Callback***
    ```javascript
@@ -36,14 +37,14 @@ Official home on Github: [https://github.com/eenewbsauce/fullstory](https://gith
       limit: number
     }
 
-   fullStory.getSessions([fsParams], [token], [(err,      sessions) => {
+   fullStory.getSessions(fsParams, [token], [(err, sessions) => {
     let sessions = sessions;
    }])
   ```
 
   ***As Promise***
   ```javascript
-  fullStory.getSessions([fsParams], [token])
+  fullStory.getSessions(fsParams, [token])
     .then(sessions => {
       let sessions = sessions;
     })
@@ -51,6 +52,23 @@ Official home on Github: [https://github.com/eenewbsauce/fullstory](https://gith
       //handle err
     })
   ```
+
+## Tests
+
+### e2e
+
+Fetch 20 sessions
+`npm run test-e2e`
+
+Fetch sessions for a client by uid
+`npm run test-e2e -- --uid={your_client_uid}`
+
+Fetch sessions for a client by email
+`npm run test-e2e -- --email={your_client_email}`
+
+### Unit Tests
+
+`npm run test`
 
 ## Official FullStory API Docs
 [http://help.fullstory.com/11269-Develop](http://help.fullstory.com/11269-Develop)

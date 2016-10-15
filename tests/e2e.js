@@ -5,7 +5,11 @@ let result;
 let err;
 let interval;
 
-fullStory.getSessions({uid: 239737})
+console.log(JSON.stringify(process.argv, null, 4));
+// process.argv['uid'];
+// process.argv['email']
+
+fullStory.getSessions()
   .then(data => {
     console.log('success');
     result = data;
