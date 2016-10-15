@@ -1,8 +1,8 @@
 'use strict';
 
-let expect = require('chai').expect;
-let assert = require('chai').assert;
-let sinon = require('sinon');
+let expect  = require('chai').expect;
+let assert  = require('chai').assert;
+let sinon   = require('sinon');
 
 let argumentsHelper = require('../../helper').arguments;
 let sb = sinon.sandbox.create();
@@ -20,7 +20,7 @@ describe('helper :: arguments ::', () => {
     sb.restore();
   });
 
-  describe('decipherArguments', () => {
+  describe('decipherArguments ::', () => {
     it('should throw if args not supplied', () => {
       try {
         let result = argumentsHelper.decipherArguments();

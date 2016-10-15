@@ -44,13 +44,13 @@ Official home on Github: [https://github.com/eenewbsauce/fullstory](https://gith
 
   ***As Promise***
   ```javascript
-  fullStory.getSessions(fsParams, [token])
-    .then(sessions => {
-      let sessions = sessions;
-    })
-    .catch(err => {
-      //handle err
-    })
+    fullStory.getSessions(fsParams, [token])
+      .then(sessions => {
+        let sessions = sessions;
+      })
+      .catch(err => {
+        //handle err
+      })
   ```
 
 ## Tests
@@ -71,7 +71,7 @@ Fetch union of sessions for a client with uid and email
 
 ### Unit Tests
 
-`npm run test`
+`npm test`
 
 ## Official FullStory API Docs
 [http://help.fullstory.com/11269-Develop](http://help.fullstory.com/11269-Develop)
