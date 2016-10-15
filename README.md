@@ -26,8 +26,9 @@ Official home on Github: [https://github.com/eenewbsauce/fullstory](https://gith
 
 4. Query the FullStory API
 
-   *All parameters shown in []
-   If uid and email supplied, then API with return union of the two collections
+   - All parameters shown in [ ] are optional
+
+   - If `uid` and `email` supplied, then API with return union of the two collections
 
    ***As Callback***
    ```javascript
