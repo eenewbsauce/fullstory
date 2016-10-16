@@ -27,7 +27,7 @@
   "homepage": "https://github.com/eenewbsauce/fullstory#readme",
   "dependencies": {
     "request": "^2.75.0",
-    "anyargs": "1.0.0"
+    "anyargs": "^1.0.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
