@@ -1,7 +1,5 @@
 'use strict';
 
-let envToken = process.env.FULLSTORY_TOKEN;
-
 module.exports = {
   decipherArguments: decipherArguments
 }
@@ -36,8 +34,8 @@ function alignArgsWithMetadata(args, metadata) {
       if (typeof args[i] === type) {
         output[key] = args[i]
         continue;
-      } else {
-        assignDefaultValue(output, type, key);
+      } else if (!output.hasOwnProperty(key)) {
+        output[key] = metadata[key].defaultValue;          
       }
     };
   });
@@ -47,19 +45,6 @@ function alignArgsWithMetadata(args, metadata) {
 
 function validInput(args, metadata) {
   return typeof args !== 'undefined' || typeof metadata !== 'undefined';
-}
-
-function assignDefaultValue(output, type, key) {
-  if (output.hasOwnProperty(key)) return;
-
-  switch (type) {
-    case 'string':
-      output[key] = envToken;
-      break;
-    case 'function':
-      output[key] = function() {}
-      break;
-  }
 }
 
 function requiredParamsNotSupplied(args, metadata) {
