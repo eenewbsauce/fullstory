@@ -11,7 +11,7 @@ let sbItems = {};
 let token = 'akhjfas87ashduasbf28hcq80';
 let cb = function() {}
 
-describe('helper :: arguments ::', () => {
+describe('argumentsHelper ::', () => {
   beforeEach(() => {
     sbItems.ahDecipher = sb.spy(argumentsHelper, 'decipherArguments');
   });

@@ -18,7 +18,6 @@ function decipherArguments(args) {
   }
 
   let output = {
-    params: {},
     token: envToken,
     cb: dummyCallback
   };

@@ -38,14 +38,14 @@ Official home on Github: [https://github.com/eenewbsauce/fullstory](https://gith
       limit: number
     }
 
-   fullStory.getSessions(fsParams, [token], [(err, sessions) => {
+   fullStory.getSessions(fsParams[,token][,(err, sessions) => {
     console.log(sessions) // [{UserId:123, SessionId: 456, CreatedTime: 1476470464, FsUrl: https://www.fullstory.com...}]
    }])
 ```
 
   ***As Promise***
 ```javascript
-    fullStory.getSessions(fsParams, [token])
+    fullStory.getSessions(fsParams[,token])
       .then(sessions => {
         let sessions = sessions;
       })
