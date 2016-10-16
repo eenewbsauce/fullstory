@@ -4,8 +4,6 @@ module.exports = {
   decipherArguments: decipherArguments
 }
 
-let dummyCallback = function() {};
-
 function decipherArguments(args, metadata) {
   if (!validInput(args, metadata)) {
     throw new Error('helper::arguments::decipherArguments:: missing args or metadata parameter');
