@@ -7,6 +7,7 @@ let sinon           = require('sinon');
 let fullstoryModule = require('../../lib/fullstory');
 let getSessions     = fullstoryModule.create().getSessions;
 let deps            = fullstoryModule.deps;
+let argsMetadata    = fullstoryModule.argsMetadata;
 
 let sb = sinon.sandbox.create();
 let sbItems = {};

@@ -8,13 +8,13 @@ module.exports = {
 
 let dummyCallback = function() {};
 
-function decipherArguments(args) {
-  if (typeof args === 'undefined') {
-    throw new Error('helper::arguments::decipherArguments:: missing args parameter');
+function decipherArguments(args, metadata) {
+  if (typeof args === 'undefined' || typeof metadata === 'undefined') {
+    throw new Error('helper::arguments::decipherArguments:: missing args or metadata parameter');
   }
 
-  if (fsParamsNotSupplied(args)) {
-    throw new Error('helper::arguments::decipherArguments:: missing fsParam in args. Object with uid or email required');
+  if (requiredParamsNotSupplied(args, metadata)) {
+    throw new Error('helper::arguments::decipherArguments:: missing required parameter in args');
   }
 
   let output = {
@@ -49,33 +49,35 @@ function decipherArguments(args) {
       }
   }
 
-  if (validOutput(output)) {
+  if (validOutput(output, metadata)) {
     return output;
   }
 
   throw new Error('helper::arguments::decipherArguments:: malformed output, possible duplication of single parameter');
 }
 //private
-function fsParamsNotSupplied(args) {
-  var notSupplied = true;
+function requiredParamsNotSupplied(args, metadata) {
+  Object.keys(metadata).every(key => {
+    let isPresent = false;
 
-  for (let i = 0; i < args.length; i++) {
-    if (typeof args[i] === 'object') {
-      notSupplied = false;
-      continue;
+    if (metadata[key].required) {
+      for (let i = 0; i < args.length; i++) {
+          if (typeof args[i] === metadata[key].type) {
+            isPresent = true;
+            continue;
+          }
+      };
+    } else {
+      isPresent = true;
     }
-  }
 
-  return notSupplied;
+    return isPresent;
+  });
 }
 
-function validOutput(output) {
-  if (typeof output.cb === 'function' &&
-      typeof output.params === 'object' &&
-      typeof output.token === 'string') {
-
-      return true;
-  }
-
-  return false;
+function validOutput(output, metadata) {
+  return Object.keys(metadata).every(key => {
+    return typeof output[key] !== 'undefined' &&
+      typeof output[key] === metadata[key].type;
+  });
 }
