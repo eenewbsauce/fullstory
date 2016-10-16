@@ -1,11 +1,11 @@
 {
   "name": "fullstory",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "FullStory SDK for API version 1",
   "main": "index.js",
   "scripts": {
     "test": "mocha --recursive tests/**/*.js",
-    "test-watch": "mocha --watch --recursive tests/**/*.js",    
+    "test-watch": "mocha --watch --recursive tests/**/*.js",
     "test-e2e": "node ./tests/e2e.js",
     "test-e2e-demo": "node ./tests/e2e.js 239737"
   },
