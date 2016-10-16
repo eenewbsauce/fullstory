@@ -1,6 +1,6 @@
 {
   "name": "fullstory",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "FullStory SDK for API version 1",
   "main": "index.js",
   "scripts": {
