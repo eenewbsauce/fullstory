@@ -9,7 +9,7 @@ module.exports = {
 let dummyCallback = function() {};
 
 function decipherArguments(args, metadata) {
-  if (typeof args === 'undefined' || typeof metadata === 'undefined') {
+  if (!validInput(args, metadata)) {
     throw new Error('helper::arguments::decipherArguments:: missing args or metadata parameter');
   }
 
@@ -17,37 +17,7 @@ function decipherArguments(args, metadata) {
     throw new Error('helper::arguments::decipherArguments:: missing required parameter in args');
   }
 
-  let output = {
-    token: envToken,
-    cb: dummyCallback
-  };
-
-  switch(true) {
-    case args.length === 3:
-      if (typeof args[2] === 'function') {
-        output.cb = args[2];
-      } else if (typeof args[2] === 'object') {
-        output.params = args[2];
-      } else if (typeof args[2] === 'string') {
-        output.token = args[2];
-      }
-    case args.length >= 2:
-      if (typeof args[1] === 'string') {
-        output.token = args[1];
-      } else if (typeof args[1] === 'function') {
-        output.cb = args[1];
-      } else if (typeof args[1] === 'object') {
-        output.params = args[1];
-      }
-    case args.length >= 1:
-      if (typeof args[0] === 'object') {
-        output.params = args[0];
-      } else if (typeof args[0] === 'function') {
-        output.cb = args[0];
-      } else if (typeof args[0] === 'string') {
-        output.token = args[0];
-      }
-  }
+  let output = alignArgsWithMetadata(args, metadata);
 
   if (validOutput(output, metadata)) {
     return output;
@@ -56,6 +26,42 @@ function decipherArguments(args, metadata) {
   throw new Error('helper::arguments::decipherArguments:: malformed output, possible duplication of single parameter');
 }
 //private
+function alignArgsWithMetadata(args, metadata) {
+  let output = {};
+
+  Object.keys(metadata).forEach(key => {
+    let type = metadata[key].type;
+
+    for (let i = 0; i < args.length; i++) {
+      if (typeof args[i] === type) {
+        output[key] = args[i]
+        continue;
+      } else {
+        assignDefaultValue(output, type, key);
+      }
+    };
+  });
+
+  return output;
+}
+
+function validInput(args, metadata) {
+  return typeof args !== 'undefined' || typeof metadata !== 'undefined';
+}
+
+function assignDefaultValue(output, type, key) {
+  if (output.hasOwnProperty(key)) return;
+
+  switch (type) {
+    case 'string':
+      output[key] = envToken;
+      break;
+    case 'function':
+      output[key] = function() {}
+      break;
+  }
+}
+
 function requiredParamsNotSupplied(args, metadata) {
   Object.keys(metadata).every(key => {
     let isPresent = false;
