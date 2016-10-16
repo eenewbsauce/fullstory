@@ -22,11 +22,20 @@ describe('argumentsHelper ::', () => {
   });
 
   describe('decipherArguments ::', () => {
-    it('should throw if args not supplied', () => {
+    it('should throw if called parameterless', () => {
       try {
         let result = argumentsHelper.decipherArguments();
       } catch (err) {
         expect(sbItems.ahDecipher.threw()).to.be.true;
+      }
+    });
+
+    it('should throw if metadata not supplied', () => {
+      try {
+        let result = argumentsHelper.decipherArguments([{}]);
+      } catch (err) {
+        expect(sbItems.ahDecipher.threw()).to.be.true;
+        expect(err.message).to.equal('helper::arguments::decipherArguments:: missing args or metadata parameter');
       }
     });
 

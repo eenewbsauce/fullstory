@@ -35,7 +35,7 @@ function alignArgsWithMetadata(args, metadata) {
         output[key] = args[i]
         continue;
       } else if (!output.hasOwnProperty(key)) {
-        output[key] = metadata[key].defaultValue;          
+        output[key] = metadata[key].defaultValue;
       }
     };
   });
@@ -44,7 +44,7 @@ function alignArgsWithMetadata(args, metadata) {
 }
 
 function validInput(args, metadata) {
-  return typeof args !== 'undefined' || typeof metadata !== 'undefined';
+  return typeof args !== 'undefined' && typeof metadata !== 'undefined';
 }
 
 function requiredParamsNotSupplied(args, metadata) {
